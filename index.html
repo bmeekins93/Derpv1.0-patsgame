@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Portrait Side-Scroller (Arcade Style)</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Phaser 3 (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
+</head>
+<body>
+  <div id="game-container"></div>
+  <div id="rotate-overlay" class="hidden">
+    <div class="rotate-card">
+      <h1>Rotate device</h1>
+      <p>This game is designed for portrait.</p>
+    </div>
+  </div>
+  <script>
+    // Simple portrait guard
+    function updateOrientationGuard() {
+      const overlay = document.getElementById('rotate-overlay');
+      if (window.innerWidth > window.innerHeight) {
+        overlay.classList.remove('hidden');
+      } else {
+        overlay.classList.add('hidden');
+      }
+    }
+    window.addEventListener('resize', updateOrientationGuard);
+    window.addEventListener('orientationchange', updateOrientationGuard);
+    updateOrientationGuard();
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
